@@ -27,6 +27,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a linter
-        run: ../make lint
+        run: make lint
 
       

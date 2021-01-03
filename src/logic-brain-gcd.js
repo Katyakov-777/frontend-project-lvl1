@@ -21,7 +21,7 @@ function getRandomInt() {
 function greatestСommonDivisor(value) {
     let firstNum = value[FIRST_NUMBER];
     let secondNum = value[SECOND_NUMBER];
-    while (firstNum && secondNum !== 0) {
+    while (firstNum !==0 && secondNum !== 0) {
         if (firstNum === secondNum) {
             return firstNum;
         } else if (firstNum > secondNum) {

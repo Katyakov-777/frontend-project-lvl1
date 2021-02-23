@@ -11,46 +11,45 @@ function getRandomInt() {
 }
 
 function randomOperator() {
-    let text = "";
-    const operator = "+-*";
-    text += operator.charAt(Math.floor(Math.random() * operator.length));
-    return text;
-  };
+  let text = '';
+  const operator = '+-*';
+  text += operator.charAt(Math.floor(Math.random() * operator.length));
+  return text;
+}
 
-  function randomExpression() {
-    const numberOne = getRandomInt();
-    const numberTwo = getRandomInt();
-    const oper = randomOperator();
-    let riddle = [numberOne, oper, numberTwo];
-    return riddle;
-};
+function randomExpression() {
+  const numberOne = getRandomInt();
+  const numberTwo = getRandomInt();
+  const oper = randomOperator();
+  const riddle = [numberOne, oper, numberTwo];
+  return riddle;
+}
 
 function calculate(value) {
-    
-    switch (value[OPERATOR]) {
-        case  "+":
-            
-            return value[FIRST_NUMBER] + value[SECOND_NUMBER];
-    
-        case  "-":
-            
-            return value[FIRST_NUMBER] - value[SECOND_NUMBER];
+  switch (value[OPERATOR]) {
+    case '+':
 
-        case  "*":
-            
-            return value[FIRST_NUMBER] * value[SECOND_NUMBER];
-        default: 
-            
-            return "no result";
-    }
-};
+      return value[FIRST_NUMBER] + value[SECOND_NUMBER];
+
+    case '-':
+
+      return value[FIRST_NUMBER] - value[SECOND_NUMBER];
+
+    case '*':
+
+      return value[FIRST_NUMBER] * value[SECOND_NUMBER];
+    default:
+
+      return 'no result';
+  }
+}
 
 const isAnswerCorrect = (value, answer) => {
-    if (calculate(value) === Number.parseInt(answer)) {
-      return true;
-    }
-    return false;
-  };
+  if (calculate(value) === Number.parseInt(answer)) {
+    return true;
+  }
+  return false;
+};
 
 const question = () => {
   console.log('Welcome to the Brain Games!');
@@ -58,15 +57,15 @@ const question = () => {
   console.log(`Hello, ${name}!`);
   console.log('What is the result of the expression?');
   for (let i = 0; i < 3; i += 1) {
-    let value = randomExpression();
-    console.log("Question: " + value[FIRST_NUMBER],value[OPERATOR],value[SECOND_NUMBER]);
+    const value = randomExpression();
+    console.log(`Question: ${value[FIRST_NUMBER]}`, value[OPERATOR], value[SECOND_NUMBER]);
     const answer = readlineSync.question('Your answer: ');
 
     if (isAnswerCorrect(value, answer)) {
       console.log('Correct!');
     } else {
-      console.log("'" + answer + "'" + " is is wrong answer ;(. Correct answer was " + "'" + calculate(value) + "'.");
-      console.log("Let's try again, " + name + "!")
+      console.log(`'${answer}'` + ' is is wrong answer ;(. Correct answer was ' + `'${calculate(value)}'.`);
+      console.log(`Let's try again, ${name}!`);
       return;
     }
   }

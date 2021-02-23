@@ -1,30 +1,29 @@
 import readlineSync from 'readline-sync';
 
-//генератор рандомного числа
+// генератор рандомного числа
 function getRandomInt(max, min) {
   return Math.floor(Math.random() * (max - min)) + min;
-};
+}
 
-//простое ли число
+// простое ли число
 const isPrimeNumber = (num) => {
-    for (let i = 2; i < num; i ++) {
-        if (num % i === 0) {
-            return false;
-        }
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      return false;
     }
-    return true;
+  }
+  return true;
 };
 
-//проверка правильности ответа
+// проверка правильности ответа
 const isAnswerCorrect = (num, answer) => {
-    if (isPrimeNumber(num) && answer === "yes") {
-      return true;
-    } else if (!isPrimeNumber(num) && answer === "no") {
-        return true;
-    } else {
-        return false;
-    }
-  };
+  if (isPrimeNumber(num) && answer === 'yes') {
+    return true;
+  } if (!isPrimeNumber(num) && answer === 'no') {
+    return true;
+  }
+  return false;
+};
 
 const question = () => {
   console.log('Welcome to the Brain Games!');
@@ -32,17 +31,17 @@ const question = () => {
   console.log(`Hello, ${name}!`);
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   for (let i = 0; i < 3; i += 1) {
-    let num = getRandomInt(16, 2);
-    console.log("Question: " + num);
+    const num = getRandomInt(16, 2);
+    console.log(`Question: ${num}`);
     const answer = readlineSync.question('Your answer: ');
-//победа/поражение
+    // победа/поражение
     if (isAnswerCorrect(num, answer)) {
       console.log('Correct!');
     } else {
-      console.log("'" + answer + "'" + " is is wrong answer ;(.");
-      console.log("Let's try again, " + name + "!");
+      console.log(`'${answer}'` + ' is is wrong answer ;(.');
+      console.log(`Let's try again, ${name}!`);
       return;
-    };
+    }
   }
   console.log(`Congratulations, ${name}!`);
 };

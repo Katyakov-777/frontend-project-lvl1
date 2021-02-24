@@ -45,7 +45,7 @@ function calculate(value) {
 }
 
 const isAnswerCorrect = (value, answer) => {
-  if (calculate(value) === Number.parseInt(answer)) {
+  if (calculate(value) === Number.parseInt(answer, 10)) {
     return true;
   }
   return false;
@@ -64,7 +64,7 @@ const question = () => {
     if (isAnswerCorrect(value, answer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}'` + ' is is wrong answer ;(. Correct answer was ' + `'${calculate(value)}'.`);
+      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${calculate(value)}'.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

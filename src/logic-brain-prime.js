@@ -7,11 +7,11 @@ function getRandomInt(max, min) {
 
 // простое ли число
 const isPrimeNumber = (num) => {
-  for (let i = 2; i < num; i++) {
+  for (let i = 2; i < num; i += 1) {
     if (num % i === 0) {
       return false;
     }
-  } 
+  }
   return true;
 };
 
@@ -38,7 +38,7 @@ const question = () => {
     if (isAnswerCorrect(num, answer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}'` + ' is is wrong answer ;(.');
+      console.log(`'${answer} is is wrong answer'`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

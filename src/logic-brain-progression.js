@@ -17,7 +17,7 @@ function generateRidle() {
   const arrayLength = getRandomInt(MAX_SEQUENCE_LENGTH, MIN_SEQUENCE_LENGTH);
   const step = getRandomInt(MAX_VALUE_FOR_SEQUENCE_STEP, MIN_VALUE_FOR_SEQUENCE_STEP);
   const progression = [initialNumber];
-  for (let i = 1; i < arrayLength; i++) {
+  for (let i = 1; i < arrayLength; i += 1) {
     const nextNumber = progression[i - 1] + step;
     progression.push(nextNumber);
   }
@@ -48,7 +48,7 @@ const question = () => {
     if (isAnswerCorrect(hiddenNumber, answer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}'` + ' is is wrong answer ;(. Correct answer was ' + `'${hiddenNumber}'.`);
+      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${hiddenNumber}'.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

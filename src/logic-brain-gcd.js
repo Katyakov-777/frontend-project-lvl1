@@ -53,7 +53,7 @@ const question = () => {
     if (isAnswerCorrect(value, answer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}'` + ' is is wrong answer ;(. Correct answer was ' + `'${greatestСommonDivisor(value)}'.`);
+      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${greatestСommonDivisor(value)}'.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

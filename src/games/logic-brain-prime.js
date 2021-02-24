@@ -38,7 +38,7 @@ const question = () => {
     if (isAnswerCorrect(num, answer)) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer} is is wrong answer'`);
+      console.log(`'${answer} is wrong answer'`);
       console.log(`Let's try again, ${name}!`);
       return;
     }

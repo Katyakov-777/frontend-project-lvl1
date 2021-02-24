@@ -22,7 +22,8 @@ function randomExpression() {
   const numberTwo = getRandomInt();
   const oper = randomOperator();
   const riddle = [numberOne, oper, numberTwo];
-  return riddle;
+  console.log(`Question: ${numberOne}`, oper, numberTwo);
+  return calculate(riddle);
 }
 
 function calculate(value) {
@@ -44,31 +45,22 @@ function calculate(value) {
   }
 }
 
-const isAnswerCorrect = (value, answer) => {
-  if (calculate(value) === Number.parseInt(answer, 10)) {
+const isAnswerCorrect = (rightAnswer, userAnswer) => {
+  if (rightAnswer === Number.parseInt(userAnswer, 10)) {
     return true;
   }
   return false;
 };
 
-const question = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('What is the result of the expression?');
-  for (let i = 0; i < 3; i += 1) {
-    const value = randomExpression();
-    console.log(`Question: ${value[FIRST_NUMBER]}`, value[OPERATOR], value[SECOND_NUMBER]);
-    const answer = readlineSync.question('Your answer: ');
-
-    if (isAnswerCorrect(value, answer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${calculate(value)}'.`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
+const showError = (rightAnswer, userAnswer) => {
+  console.log(`${userAnswer} is is wrong answer ;(. Correct answer was ${rightAnswer}.`);
 };
-export { question as default };
+// return right answert
+const generateRiddle = () => randomExpression();
+
+const askQuestion = () => {
+  console.log('What is the result of the expression?');
+};
+export {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+};

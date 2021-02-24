@@ -46,10 +46,7 @@ function calculate(value) {
 }
 
 const isAnswerCorrect = (rightAnswer, userAnswer) => {
-  if (rightAnswer === Number.parseInt(userAnswer, 10)) {
-    return true;
-  }
-  return false;
+  return rightAnswer === Number.parseInt(userAnswer, 10);
 };
 
 const showError = (rightAnswer, userAnswer) => {

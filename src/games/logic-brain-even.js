@@ -14,11 +14,7 @@ const isEven = (number) => {
 };
 
 const isAnswerCorrect = (rightAnswer, userAnswer) => {
-  if (rightAnswer === userAnswer) {
-    return true;
-  }
-
-  return false;
+  return rightAnswer === userAnswery;
 };
 
 const showError = (rightAnswer, userAnswer) => {

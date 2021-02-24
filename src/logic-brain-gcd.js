@@ -34,7 +34,7 @@ function greatestСommonDivisor(value) {
 }
 // проверка правильности ответа
 const isAnswerCorrect = (value, answer) => {
-  if (greatestСommonDivisor(value) === Number.parseInt(answer)) {
+  if (greatestСommonDivisor(value) === Number.parseInt(answer, 10)) {
     return true;
   }
   return false;

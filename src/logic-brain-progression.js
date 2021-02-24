@@ -26,7 +26,7 @@ function generateRidle() {
 
 // проверка правильности ответа
 const isAnswerCorrect = (hiddenNumber, answer) => {
-  if (hiddenNumber === Number.parseInt(answer)) {
+  if (hiddenNumber === Number.parseInt(answer, 10)) {
     return true;
   }
   return false;

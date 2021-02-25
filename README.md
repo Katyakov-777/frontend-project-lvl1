@@ -5,5 +5,5 @@
 
 [![Actions Status](https://github.com/Katyakov-777/frontend-project-lvl1/actions/workflows/eslint.yml/badge.svg)](https://github.com/Katyakov-777/frontend-project-lvl1/actions)
 
-https://asciinema.org/a/CDFsTVrsV754Yhnn6MWrATHNj
+https://asciinema.org/a/CDFsTVrsV754Yhnn6MWrATHNj - brain-even
 

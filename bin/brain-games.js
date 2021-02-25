@@ -1,4 +1,4 @@
-#!/usr/bin/env nodie
+#!/usr/bin/env node
 import question from '../src/cli.js';
 
 question();

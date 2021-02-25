@@ -1,4 +1,7 @@
-#!/usr/bin/env nodie
-import question from '../src/logic-brain-gcd.js';
+#!/usr/bin/env node
+import mainFraim from '../src/index.js';
+import {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+} from '../src/games/logic-brain-gcd.js';
 
-question();
+mainFraim(askQuestion, generateRiddle, isAnswerCorrect, showError);

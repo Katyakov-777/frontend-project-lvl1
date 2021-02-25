@@ -1,4 +1,7 @@
-#!/usr/bin/env nodie
-import question from '../src/logic-brain-progression.js';
+#!/usr/bin/env node
+import mainFraim from '../src/index.js';
+import {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+} from '../src/games/logic-brain-progression.js';
 
-question();
+mainFraim(askQuestion, generateRiddle, isAnswerCorrect, showError);

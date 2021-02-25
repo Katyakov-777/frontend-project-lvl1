@@ -1,21 +1,13 @@
-import readlineSync from 'readline-sync';
-
-const FIRST_NUMBER_IN_SEQUENCE = 0;
-const MAX_VALUE_FOR_SEQUENCE_STEP = 11;
-const MIN_VALUE_FOR_SEQUENCE_STEP = 2;
-const MAX_SEQUENCE_LENGTH = 11;
-const MIN_SEQUENCE_LENGTH = 5;
-
-// генератор рандомного числа
-function getRandomInt(max, min) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+import getRandomInt from '../Utilities.js';
+import { commonNumberRange, progressionConstants } from '../Defines.js';
 
 // рандомная прогрессия
-function generateRidle() {
-  const initialNumber = getRandomInt(101, 1);
-  const arrayLength = getRandomInt(MAX_SEQUENCE_LENGTH, MIN_SEQUENCE_LENGTH);
-  const step = getRandomInt(MAX_VALUE_FOR_SEQUENCE_STEP, MIN_VALUE_FOR_SEQUENCE_STEP);
+function getProgression() {
+  const initialNumber = getRandomInt(commonNumberRange.MAX_NUMBER, commonNumberRange.MIN_NUMBER);
+  const arrayLength = getRandomInt(progressionConstants.MAX_PROGRESSION_LENGTH,
+    progressionConstants.MIN_PROGRESSION_LENGTH);
+  const step = getRandomInt(progressionConstants.MAX_PROGRESSION_STEP,
+    progressionConstants.MIN_PROGRESSION_STEP);
   const progression = [initialNumber];
   for (let i = 1; i < arrayLength; i += 1) {
     const nextNumber = progression[i - 1] + step;
@@ -24,35 +16,27 @@ function generateRidle() {
   return progression;
 }
 
-// проверка правильности ответа
-const isAnswerCorrect = (hiddenNumber, answer) => {
-  if (hiddenNumber === Number.parseInt(answer, 10)) {
-    return true;
-  }
-  return false;
+const isAnswerCorrect = (rightAnswer, userAnswer) => rightAnswer === Number.parseInt(userAnswer,
+  10);
+
+const showError = (rightAnswer, userAnswer) => {
+  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+};
+// return right answert
+const generateRiddle = () => {
+  const progression = getProgression();
+  const hiddenPosition = getRandomInt(progression.length,
+    progressionConstants.FIRST_NUMBER_IN_PROGRESSION);
+  const hiddenNumber = progression[hiddenPosition];
+  progression[hiddenPosition] = '..';
+  console.log(`Question: ${progression.join(' ')}`);
+  return hiddenNumber;
 };
 
-const question = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Find the greatest common divisor of given numbers.');
-  for (let i = 0; i < 3; i += 1) {
-    const value = generateRidle();
-    const hiddenPosition = getRandomInt(value.length, FIRST_NUMBER_IN_SEQUENCE);
-    const hiddenNumber = value[hiddenPosition];
-    value[hiddenPosition] = '..';
-    console.log(`Question: ${value.join(' ')}`);
-    const answer = readlineSync.question('Your answer: ');
-    // победа/поражение
-    if (isAnswerCorrect(hiddenNumber, answer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${hiddenNumber}'.`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
+const askQuestion = () => {
+  console.log('What number is missing in the progression?');
 };
-export { question as default };
+
+export {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+};

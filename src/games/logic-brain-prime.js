@@ -1,9 +1,5 @@
-import readlineSync from 'readline-sync';
-
-// генератор рандомного числа
-function getRandomInt(max, min) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+import getRandomInt from '../Utilities.js';
+import { primeConstants } from '../Defines.js';
 
 // простое ли число
 const isPrimeNumber = (num) => {
@@ -15,34 +11,23 @@ const isPrimeNumber = (num) => {
   return true;
 };
 
-// проверка правильности ответа
-const isAnswerCorrect = (num, answer) => {
-  if (isPrimeNumber(num) && answer === 'yes') {
-    return true;
-  } if (!isPrimeNumber(num) && answer === 'no') {
-    return true;
-  }
-  return false;
+const isAnswerCorrect = (rightAnswer, userAnswer) => rightAnswer === userAnswer;
+
+const showError = (rightAnswer, userAnswer) => {
+  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
 };
 
-const question = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  for (let i = 0; i < 3; i += 1) {
-    const num = getRandomInt(16, 2);
-    console.log(`Question: ${num}`);
-    const answer = readlineSync.question('Your answer: ');
-    // победа/поражение
-    if (isAnswerCorrect(num, answer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer} is wrong answer'`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
+// return right answert
+const generateRiddle = () => {
+  const num = getRandomInt(primeConstants.MAX_NUMBER, primeConstants.MIN_NUMBER);
+  console.log(`Question: Question: ${num}`);
+  return isPrimeNumber(num) ? 'yes' : 'no';
 };
-export { question as default };
+
+const askQuestion = () => {
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+};
+
+export {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+};

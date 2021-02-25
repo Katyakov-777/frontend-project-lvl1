@@ -1,10 +1,5 @@
-import readlineSync from 'readline-sync';
-
-function getRandomInt() {
-  const min = Math.ceil(1);
-  const max = Math.floor(101);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+import getRandomInt from '../Utilities.js';
+import { commonNumberRange } from '../Defines.js';
 
 const isEven = (number) => {
   if (number % 2 === 0) {
@@ -13,16 +8,14 @@ const isEven = (number) => {
   return false;
 };
 
-const isAnswerCorrect = (rightAnswer, userAnswer) => {
-  return rightAnswer === userAnswery;
-};
+const isAnswerCorrect = (rightAnswer, userAnswer) => rightAnswer === userAnswer;
 
 const showError = (rightAnswer, userAnswer) => {
   console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
 };
 // return right answert
 const generateRiddle = () => {
-  const number = getRandomInt();
+  const number = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);
   console.log(`Question: ${number}`);
   return isEven(number) ? 'yes' : 'no';
 };

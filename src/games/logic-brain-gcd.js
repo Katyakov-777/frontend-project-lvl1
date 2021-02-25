@@ -1,26 +1,18 @@
-import readlineSync from 'readline-sync';
-
-const FIRST_NUMBER = 0;
-const SECOND_NUMBER = 1;
-
-// генератор рандомного числа
-function getRandomInt() {
-  const min = Math.ceil(1);
-  const max = Math.floor(101);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+import getRandomInt from '../Utilities.js';
+import { commonNumberRange, gcdConstants } from '../Defines.js';
 
 // массив рандомных чисел
 function randomNumber() {
-  const numberOne = getRandomInt();
-  const numberTwo = getRandomInt();
+  const numberOne = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);
+  const numberTwo = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);
   const riddle = [numberOne, numberTwo];
   return riddle;
 }
+
 // наибольший общий делитель
 function greatestСommonDivisor(value) {
-  let firstNum = value[FIRST_NUMBER];
-  let secondNum = value[SECOND_NUMBER];
+  let firstNum = value[gcdConstants.FIRST_NUMBER];
+  let secondNum = value[gcdConstants.SECOND_NUMBER];
   while (firstNum !== 0 && secondNum !== 0) {
     if (firstNum === secondNum) {
       return firstNum;
@@ -32,32 +24,24 @@ function greatestСommonDivisor(value) {
   }
   return firstNum + secondNum;
 }
-// проверка правильности ответа
-const isAnswerCorrect = (value, answer) => {
-  if (greatestСommonDivisor(value) === Number.parseInt(answer, 10)) {
-    return true;
-  }
-  return false;
+
+const isAnswerCorrect = (rightAnswer, userAnswer) => rightAnswer === Number.parseInt(userAnswer,
+  10);
+
+const showError = (rightAnswer, userAnswer) => {
+  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+};
+// return right answert
+const generateRiddle = () => {
+  const number = randomNumber();
+  console.log(`Question: ${number[gcdConstants.FIRST_NUMBER]} ${number[gcdConstants.SECOND_NUMBER]}`);
+  return greatestСommonDivisor(number);
 };
 
-const question = () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+const askQuestion = () => {
   console.log('Find the greatest common divisor of given numbers.');
-  for (let i = 0; i < 3; i += 1) {
-    const value = randomNumber();
-    console.log(`Question: ${value[FIRST_NUMBER]} ${value[SECOND_NUMBER]}`);
-    const answer = readlineSync.question('Your answer: ');
-    // победа/поражение
-    if (isAnswerCorrect(value, answer)) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer} is is wrong answer ;(. Correct answer was ${greatestСommonDivisor(value)}'.`);
-      console.log(`Let's try again, ${name}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${name}!`);
 };
-export { question as default };
+
+export {
+  askQuestion, generateRiddle, isAnswerCorrect, showError,
+};

@@ -5,7 +5,7 @@
 
 [![Actions Status](https://github.com/Katyakov-777/frontend-project-lvl1/actions/workflows/eslint.yml/badge.svg)](https://github.com/Katyakov-777/frontend-project-lvl1/actions)
 
-<<<<<<< HEAD
+
 1. Brain-even game:
 https://asciinema.org/a/394608
 
@@ -20,7 +20,3 @@ https://asciinema.org/a/394619
 
 5. Brain-prime game:
 https://asciinema.org/a/394623
-=======
-https://asciinema.org/a/CDFsTVrsV754Yhnn6MWrATHNj - brain-even
-
->>>>>>> 1a62a7226772c14d5e00fefeff90d3fff4438bec

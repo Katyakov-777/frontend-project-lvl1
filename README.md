@@ -5,3 +5,17 @@
 
 [![Actions Status](https://github.com/Katyakov-777/frontend-project-lvl1/actions/workflows/eslint.yml/badge.svg)](https://github.com/Katyakov-777/frontend-project-lvl1/actions)
 
+1. Brain-even game:
+https://asciinema.org/a/394608
+
+2. Brain-calc game:
+https://asciinema.org/a/394615
+
+3. Brain-gcd game:
+https://asciinema.org/a/394616
+
+4. Brain-progression game:
+https://asciinema.org/a/394619
+
+5. Brain-prime game:
+https://asciinema.org/a/394623

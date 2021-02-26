@@ -32,7 +32,7 @@ function randomExpression() {
   const numberTwo = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);
   const oper = randomOperator();
   const riddle = [numberOne, oper, numberTwo];
-  console.log(`Question: ${numberOne}`, oper, numberTwo);
+  console.log(`Question: ${numberOne} ${oper} ${numberTwo}`);
   return calculate(riddle);
 }
 

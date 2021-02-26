@@ -26,7 +26,7 @@ function calculate(value) {
       return 'no result';
   }
 }
-
+//random generation of Numbers
 function randomExpression() {
   const numberOne = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);
   const numberTwo = getRandomInt(commonNumberRange.MIN_NUMBER, commonNumberRange.MAX_NUMBER);

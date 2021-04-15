@@ -1,6 +1,8 @@
 import getRandomInt from '../Utilities.js';
 import { commonNumberRange, сalcConstants } from '../Defines.js';
-//generate random math operator
+
+// generate random math operator
+
 function randomOperator() {
   let text = '';
   const operator = '+-*';
